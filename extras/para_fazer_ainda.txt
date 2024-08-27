@@ -1,0 +1,2 @@
+colocar cabeçalho nas consultas específicas da questão 2: "CID | Nome técnico | Nome popular | ..."
+alinhar print de todas as doenças
