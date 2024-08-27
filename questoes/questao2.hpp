@@ -3,7 +3,23 @@
 
 #include "../include.hpp"
 
+
+bool temAcento(const std::string& palavra) {
+    // Conjunto de caracteres com acentos em UTF-8
+    const std::string acentos = "áéíóúàèìòùâêîôûãõçÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÇ";
+
+    // Itera sobre cada caractere na palavra
+    for (char c : palavra) {
+        if (acentos.find(c) != std::string::npos) {
+            return true;  // Retorna true se um caractere com acento for encontrado
+        }
+    }
+
+    return false;  // Retorna false se nenhum caractere com acento for encontrado
+}
+
 void listarDoencas(unique_ptr<sql::Connection>& connection){
+    string p;
     // Cria um objeto do comando SQL
     unique_ptr<sql::PreparedStatement> statement(connection->prepareStatement("SELECT * from doencas"));
 
@@ -11,19 +27,27 @@ void listarDoencas(unique_ptr<sql::Connection>& connection){
     unique_ptr<sql::ResultSet> result(statement->executeQuery());
 
     while(result->next()){
-        cout << result->getString("cid") << "  ";
-        cout << result->getString("nome_tecnico") << "  ";
-        cout << result->getInt("id_patogeno") << "  \n";
+        int t = result->getString("nome_tecnico").length();
+        if(t < 16){
+            p = result->getString("nome_tecnico").append(string(30-t, ' ')).c_str();
+            if(temAcento(p)){
+                p = p.append(" ");
+            }
+        }
+        cout << left << setw(12) << result->getString("cid") << "  "
+                << left << p << "  "
+                 << setw(12) << result->getInt("id_patogeno") << "  \n";
         //doencas.push_back(doenca);
     }
+    
 }
 
 void imprimirDoencas(unique_ptr<sql::Connection>& connection){
-    cout << left << setw(20) << "CID" 
-             << setw(30) << "Nome Técnico" 
-             << setw(10) << "ID Patógeno" << endl;
+    cout << left << setw(12) << "CID" 
+             << setw(12) << "Nome Técnico                  " 
+             << setw(12) << "ID Patógeno" << endl;
 
-        cout << string(55, '-') << endl; // Separador de linhas
+        cout << string(70, '-') << endl; // Separador de linhas
     listarDoencas(connection);
 
     /*for (const auto& doenca : doencas) {
