@@ -14,10 +14,7 @@ int main(){
         
         while(op != 0){
             //sql::SQLString url("jdbc:mariadb://127.0.0.1:3306/sistemaadd");
-            //sql::Properties properties({{"user", "root"}, {"password", "280204"}});
-
-            sql::SQLString url("jdbc:mariadb://192.168.0.1:3306/sistemaadd");
-            sql::Properties properties({{"user", "root"}, {"password", "202702"}});
+            //sql::Properties properties({{"user", "root"}, {"password", "123"}});
 
             // Cria a conexão com o banco de dados
             sql::Driver* driver = sql::mariadb::get_driver_instance();

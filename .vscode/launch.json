@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/julia/Documents/banco de dados/tp2",
-      "program": "c:/Users/julia/Documents/banco de dados/tp2/build/Debug/outDebug",
+      "cwd": "c:/Users/Patrícia/Documents/GitHub/sistemaadd",
+      "program": "c:/Users/Patrícia/Documents/GitHub/sistemaadd/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
