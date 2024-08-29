@@ -13,8 +13,8 @@ int main(){
         // Configuração da conexão com o banco de dados
         
         while(op != 0){
-            //sql::SQLString url("jdbc:mariadb://127.0.0.1:3306/sistemaadd");
-            //sql::Properties properties({{"user", "root"}, {"password", "123"}});
+            sql::SQLString url("jdbc:mariadb://127.0.0.1:3306/sistemaadd");
+            sql::Properties properties({{"user", "root"}, {"password", "anna182135"}});
 
             // Cria a conexão com o banco de dados
             sql::Driver* driver = sql::mariadb::get_driver_instance();
@@ -31,6 +31,9 @@ int main(){
                 break;
 
                 case 1:
+
+                    cout << "\vnVocê deseja cadastrar sintomas?\n";
+                    //cadastrarSintoma(connection);
                 break;
 
                 case 2:
